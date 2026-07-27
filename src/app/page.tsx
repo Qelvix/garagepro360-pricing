@@ -1,65 +1,96 @@
-import Image from "next/image";
+import PricingCalculator from "@/components/PricingCalculator";
+
+const WHY_CHOOSE_US = [
+  {
+    title: "Complete Core, Every Tier",
+    body: "Every subscriber — from Foundation to Summit — receives full job-card lifecycle management, never a limited trial-like experience.",
+  },
+  {
+    title: "Usage-Aligned Add-On Pricing",
+    body: "Add-ons are priced on the actual resource they consume (storage, messages, transactions, headcount) — not arbitrary feature bundles.",
+  },
+  {
+    title: "Transparent Bundle Discounts",
+    body: "GMS subscribers receive built-in discounts on integrated add-ons, rewarding platform loyalty without inflating standalone pricing.",
+  },
+  {
+    title: "Scalable Support Model",
+    body: "Support responsiveness scales with your tier — from next-business-day chat support up to 24×7 priority coverage with quarterly business reviews.",
+  },
+  {
+    title: "No Long-Term Lock-In Required",
+    body: "Month-to-month billing available at every tier, with an annual prepayment discount for customers who want to commit long-term.",
+  },
+  {
+    title: "Built for Growth",
+    body: "Clear upgrade paths mean your platform grows with your workshop — from a single bay to a multi-location enterprise chain — without a disruptive system migration.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="flex-1 flex flex-col">
+      <header className="border-b border-slate-200 bg-white">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+          <div>
+            <div className="text-xl font-bold text-slate-900">GaragePro360</div>
+            <div className="text-xs text-slate-500">
+              Pricing Calculator — Executive Guide
+            </div>
+          </div>
+          <a
+            href="#tiers"
+            className="text-sm rounded-lg bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition"
+          >
+            Build my plan
+          </a>
+        </div>
+      </header>
+
+      <section className="bg-gradient-to-b from-blue-900 to-blue-800 text-white">
+        <div className="max-w-6xl mx-auto px-6 py-12">
+          <h1 className="text-3xl sm:text-4xl font-bold max-w-2xl">
+            See your GaragePro360 cost in real time
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-3 text-blue-100 max-w-2xl">
+            Pick a subscription tier and the add-ons your workshop needs — the
+            estimate updates instantly, itemized just like your invoice would be.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+      </section>
+
+      <main className="max-w-6xl mx-auto px-6 py-10 w-full flex-1">
+        <PricingCalculator />
       </main>
+
+      <section className="bg-white border-t border-slate-200">
+        <div className="max-w-6xl mx-auto px-6 py-12">
+          <h2 className="text-xl font-semibold text-slate-900 mb-6">Why choose us</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {WHY_CHOOSE_US.map((item) => (
+              <div key={item.title} className="rounded-xl border border-slate-200 p-4">
+                <div className="font-medium text-slate-900">{item.title}</div>
+                <p className="text-sm text-slate-500 mt-1">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-slate-900 text-slate-300 mt-auto">
+        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="text-sm">
+            © GaragePro360. All prices in INR, USD shown as approximate.
+          </div>
+          <div className="text-sm space-x-4">
+            <a href="mailto:sales@garagepro360.example" className="hover:text-white">
+              sales@garagepro360.example
+            </a>
+            <span>+91-XXXXXXXXXX</span>
+            <span>www.garagepro360.example</span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
